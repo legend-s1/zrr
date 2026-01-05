@@ -2,25 +2,88 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>اختبار Activity</title>
+<title>Kick Stream Launcher</title>
 <style>
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #1e1e1e;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e1e1e, #121212);
     color: #fff;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
   }
+
   h1 {
-    font-size: 36px;
+    font-size: 32px;
+    margin-bottom: 20px;
     text-align: center;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 400px;
+    gap: 10px;
+  }
+
+  input {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  button {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #3cff00;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background: #2bd600;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #aaa;
   }
 </style>
 </head>
 <body>
-  <h1>🎉 مرحبا بك في الاختبار!</h1>
+
+<h1>🎥 Kick Stream Launcher</h1>
+
+<div class="container">
+  <input id="channel" placeholder="أدخل اسم قناة Kick أو رابطها">
+  <button onclick="go()">تشغيل البث</button>
+</div>
+
+<p>يتم فتح البث داخل Discord مباشرة</p>
+
+<script>
+function go() {
+  let input = document.getElementById("channel").value.trim();
+  if (!input) return;
+
+  let url = input.includes("kick.com") ? input : "https://kick.com/" + input;
+
+  // الحل النهائي: Redirect داخل نفس الـ Activity
+  location.href = url;
+}
+</script>
+
 </body>
 </html>
